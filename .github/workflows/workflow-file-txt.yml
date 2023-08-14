@@ -14,7 +14,7 @@ jobs:
 
       - name: Check file existence
         id: check_files
-        uses: karilaa/file-existence-action
+        uses: karilaa-dev/file-existence-action@v2.1
         with:
           files: "*.txt"
           fail: true
