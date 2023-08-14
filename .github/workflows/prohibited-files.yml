@@ -6,7 +6,7 @@ on:
         branches: '**'
 
 jobs:
-  prohibited_files:
+  prohibited-files:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
