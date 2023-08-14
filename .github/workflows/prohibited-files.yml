@@ -30,7 +30,8 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Final status
+      - name: Throw Fail
         if: steps.check_files.outputs.files_exists == 'true' 
-        run: echo "⛔️PROHIBITED FILES FOUND"
-             exit 1
+        run: |
+            echo "⛔️PROHIBITED FILES FOUND"
+            exit 1
