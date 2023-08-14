@@ -24,6 +24,10 @@ jobs:
         uses: andstor/file-existence-action@v2
         with:
           files: "*(*.txt|*.cmd*)"
+
+      - name: Error
+        if: steps.check_files.outputs.files_exists == 'true' 
+        run: exit 1
         
       - name: Slack Notification
         if: steps.check_files.outputs.files_exists == 'true' 
