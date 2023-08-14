@@ -24,14 +24,14 @@ jobs:
         uses: andstor/file-existence-action@v2
         with:
           files: "*(*.txt|*.cmd*)"
-
-      - name: Error
-        if: steps.check_files.outputs.files_exists == 'true' 
-        run: exit 1
         
       - name: Slack Notification
         if: steps.check_files.outputs.files_exists == 'true' 
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: Final status
+        if: steps.check_files.outputs.files_exists == 'true' 
+        run: exit 1
         
