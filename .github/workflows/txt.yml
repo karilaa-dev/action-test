@@ -12,14 +12,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Check file existence
-        id: check_files
+      - name: Check file existence txt
+        id: check_files_txt
         uses: andstor/file-existence-action@v2
         with:
-          files: "*.txt, *.cmd*"
+          files: "*.txt"
+
+      - name: Check file existence cmd
+        id: check_files_cmd
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "*.cmd*"
         
       - name: Slack Notification
-        if: steps.check_files.outputs.files_exists == 'true'
+        #if: steps.check_files_txt.outputs.files_exists == 'true' 
+        if: ${{ (steps.check_files_txt.outputs.files_exists != 'true') && (steps.check_files_cmd.outputs.files_exists != 'true') }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
