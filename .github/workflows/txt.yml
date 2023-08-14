@@ -16,7 +16,7 @@ jobs:
       - run: |
           for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
               git checkout $commit
-              echo "run test"
+
           done
           
       - name: Check file existence
