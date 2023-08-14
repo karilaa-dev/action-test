@@ -1,4 +1,4 @@
-name: "TestRepo Prohibited Files"
+name: "Testing Resources Prohibited Files"
 
 on: 
     push:
@@ -16,7 +16,6 @@ jobs:
       - run: |
           for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
               git checkout $commit
-
           done
           
       - name: Check file existence
@@ -33,5 +32,5 @@ jobs:
 
       - name: Final status
         if: steps.check_files.outputs.files_exists == 'true' 
-        run: echo "stop"
-        
+        run: echo "⛔️PROHIBITED FILES FOUND"
+             exit 1
