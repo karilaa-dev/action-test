@@ -1,4 +1,4 @@
-name: ".txt"
+name: "Prohibited files"
 
 on: 
     push:
@@ -14,9 +14,9 @@ jobs:
 
       - name: Check file existence
         id: check_files
-        uses: karilaa-dev/file-existence-action@v3
+        uses: karilaa-dev/file-existence-action@main
         with:
-          files: "*.txt"
+          files: "*.txt, *.cmd*"
           fail: true
 
       - name: File exists
