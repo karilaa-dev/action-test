@@ -1,5 +1,3 @@
-git fetch
-git pull
 touch bad.txt
 git add bad.txt
 git commit -m "test1"
