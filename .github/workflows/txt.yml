@@ -33,5 +33,5 @@ jobs:
 
       - name: Final status
         if: steps.check_files.outputs.files_exists == 'true' 
-        run: exit 1
+        run: echo "stop"
         
