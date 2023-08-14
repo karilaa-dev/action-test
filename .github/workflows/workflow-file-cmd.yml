@@ -14,7 +14,7 @@ jobs:
 
       - name: Check file existence
         id: check_files
-        uses: akarilaa-dev/file-existence-action@v2
+        uses: karilaa-dev/file-existence-action@v2
         with:
           files: "*.cmd*"
           fail: true
