@@ -1,4 +1,4 @@
-name: "Prohibited files"
+name: "TestRepo Prohibited Files"
 
 on: 
     push:
@@ -18,13 +18,14 @@ jobs:
         with:
           files: "*.txt, *.cmd*"
           fail: true
-
-      - name: File exists
-        if: steps.check_files.outputs.files_exists == 'false'
-        # Only runs if all of the files exists
-        run: echo Failed Successfully!
         
       - name: Slack Notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          
+      - name: Slack Notification 2
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
