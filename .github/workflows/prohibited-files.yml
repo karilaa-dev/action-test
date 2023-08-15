@@ -1,4 +1,4 @@
-nname: "Testing Resources Prohibited Files"
+name: "Testing Resources Prohibited Files"
 
 on: 
     push:
