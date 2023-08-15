@@ -1,4 +1,4 @@
-name: "Testing Resources Prohibited Files"
+nname: "Testing Resources Prohibited Files"
 
 on: 
     push:
@@ -14,7 +14,7 @@ jobs:
           # checkout full tree
           fetch-depth: 0
       - run: |
-          for commit in $(git rev-list ${{ github.base_ref}}..${{ github.sha}}); do
+          for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
               git checkout $commit
           done
           
